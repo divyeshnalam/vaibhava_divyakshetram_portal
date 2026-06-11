@@ -1,1 +1,1 @@
-web: gunicorn vaibhava_temple.wsgi
+python manage.py collectstatic --noinput && gunicorn vaibhava_temple.wsgi

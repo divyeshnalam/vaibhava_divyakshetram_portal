@@ -1,0 +1,45 @@
+# Virtual Environment
+venv/
+.env
+.env.*
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django database (if using SQLite)
+db.sqlite3
+db.sqlite3-journal
+
+# Media files (uploaded images)
+media/
+
+# Collected static files
+staticfiles/
+
+# Python packaging
+build/
+dist/
+*.egg-info/
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Pytest
+.pytest_cache/
+
+# Mypy
+.mypy_cache/
+
+# Coverage reports
+.coverage
+htmlcov/

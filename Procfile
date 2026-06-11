@@ -1,0 +1,1 @@
+web: gunicorn vaibhava_temple.wsgi

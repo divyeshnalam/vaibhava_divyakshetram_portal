@@ -139,24 +139,19 @@ REST_FRAMEWORK = {
 JAZZMIN_SETTINGS = {
     "site_header": "Sri Vaibhava Venkateswara Swamy Devasthanam Portal",
     "site_title": "Sri Vaibhava Venkateswara Swamy Devasthanam Administration",
-    "site_brand": "Sri Vaibhava Venkateswara Swamy",
+    "site_brand": "Sri ",
     "index_title": "Temple Content Management",
     "welcome_sign": "Welcome to the Sri Vaibhava Venkateswara Swamy Devasthanam Portal",
     "copyright": "Sri Vaibhav Venkateswara Swamy Devasthanam",
-
-    # # ── Logo (was None before, and wrongly placed in UI_TWEAKS) ──
-    # "site_logo":        "admin/img/logo.png",
-    # "login_logo":       "admin/img/logo.png",
-    # "login_logo_dark":  "admin/img/logo.png",
-    # "site_logo_classes": "img-fluid",
-    # "site_icon":        "admin/img/logo.png",
-
+    
     "show_sidebar": True,
     "navigation_expanded": True,
+    "show_ui_builder": False,
+    
     "search_model": ["auth.user"],
     "topmenu_links": [
         {"name": "Home", "url": "admin:index", "permissions": ["auth.view_user"]},
-        {"name": "Public API", "url": "/api/home/", "new_window": True},
+        # {"name": "Public API", "url": "/api/home/", "new_window": True},
     ],
     "icons": {
         "auth": "fas fa-users-cog",
@@ -177,30 +172,88 @@ JAZZMIN_SETTINGS = {
     "default_icon_children": "fas fa-circle",
     "related_modal_active": True,
     "use_google_fonts_cdn": True,
-    "show_ui_builder": False,
     "changeform_format": "horizontal_tabs",
+    
+    "site_logo": "admin/img/logo.png",
+    "login_logo": "admin/img/logo.png",
+    "site_icon": "admin/img/logo.png",
+    "custom_css": "admin/css/custom_admin.css",
 }
-
 
 JAZZMIN_UI_TWEAKS = {
-    "brand_colour": "navbar-danger",
-    "accent": "accent-danger",
-    "navbar": "navbar-dark",
+      "navbar": "navbar-white navbar-light",
+    "brand_colour": "navbar-maroon",
+    "accent": "accent-warning",
+    "sidebar": "sidebar-dark-danger",
     "navbar_fixed": True,
     "sidebar_fixed": True,
-    "sidebar": "sidebar-dark-danger",
-    "sidebar_nav_compact_style": True,
-    "sidebar_nav_child_indent": True,
-    # "site_logo": "admin/img/temple_logo.svg",          # add this
-    # "site_logo_classes": "img-circle elevation-3",      # add this
-    # "site_icon": "admin/img/temple_logo.svg",           # add this (browser tab icon)
-    # "custom_css": "admin/css/custom_admin.css",         # add this
-    # "custom_js": "admin/js/custom_admin.js",
-    # "site_logo": "admin/img/logo.png",
-    # "site_logo_classes": "img-fluid",
-    # "login_logo": "admin/img/logo.png",
-    # "login_logo_dark": "admin/img/logo.png", 
 }
+# JAZZMIN_SETTINGS = {
+#     "site_header": "Sri Vaibhava Venkateswara Swamy Devasthanam Portal",
+#     "site_title": "Sri Vaibhava Venkateswara Swamy Devasthanam Administration",
+#     "site_brand": "Sri Vaibhava Venkateswara Swamy",
+#     "index_title": "Temple Content Management",
+#     "welcome_sign": "Welcome to the Sri Vaibhava Venkateswara Swamy Devasthanam Portal",
+#     "copyright": "Sri Vaibhav Venkateswara Swamy Devasthanam",
+
+#     # # ── Logo (was None before, and wrongly placed in UI_TWEAKS) ──
+#     # "site_logo":        "admin/img/logo.png",
+#     # "login_logo":       "admin/img/logo.png",
+#     # "login_logo_dark":  "admin/img/logo.png",
+#     # "site_logo_classes": "img-fluid",
+#     # "site_icon":        "admin/img/logo.png",
+
+#     "show_sidebar": True,
+#     "navigation_expanded": True,
+#     "search_model": ["auth.user"],
+#     "topmenu_links": [
+#         {"name": "Home", "url": "admin:index", "permissions": ["auth.view_user"]},
+#         {"name": "Public API", "url": "/api/home/", "new_window": True},
+#     ],
+#     "icons": {
+#         "auth": "fas fa-users-cog",
+#         "auth.user": "fas fa-user",
+#         "auth.Group": "fas fa-users",
+#         "temple_content.TempleInformation": "fas fa-gopuram",
+#         "temple_content.HeroSlide": "fas fa-images",
+#         "temple_content.Sloka": "fas fa-book-open",
+#         "temple_content.Event": "fas fa-calendar-alt",
+#         "temple_content.NewsAnnouncement": "fas fa-newspaper",
+#         "temple_content.GalleryCategory": "fas fa-folder-open",
+#         "temple_content.GalleryImage": "fas fa-photo-video",
+#         "temple_content.Seva": "fas fa-hands",
+#         "temple_content.ContactSubmission": "fas fa-envelope",
+#         "auditlog.LogEntry": "fas fa-history",
+#     },
+#     "default_icon_parents": "fas fa-chevron-circle-right",
+#     "default_icon_children": "fas fa-circle",
+#     "related_modal_active": True,
+#     "use_google_fonts_cdn": True,
+#     "show_ui_builder": True,
+#     "changeform_format": "horizontal_tabs",
+# }
+
+
+# JAZZMIN_UI_TWEAKS = {
+#     "brand_colour": "navbar-danger",
+#     "accent": "accent-danger",
+#     "navbar": "navbar-dark",
+#     "navbar_fixed": True,
+#     "sidebar_fixed": True,
+#     "sidebar": "sidebar-dark-danger",
+#     "sidebar_nav_compact_style": True,
+#     "sidebar_nav_child_indent": True,
+    
+#     # "site_logo": "admin/img/temple_logo.svg",          # add this
+#     # "site_logo_classes": "img-circle elevation-3",      # add this
+#     # "site_icon": "admin/img/temple_logo.svg",           # add this (browser tab icon)
+#     # "custom_css": "admin/css/custom_admin.css",         # add this
+#     # "custom_js": "admin/js/custom_admin.js",
+#     # "site_logo": "admin/img/logo.png",
+#     # "site_logo_classes": "img-fluid",
+#     # "login_logo": "admin/img/logo.png",
+#     # "login_logo_dark": "admin/img/logo.png", 
+# }
 
 # from pathlib import Path
 

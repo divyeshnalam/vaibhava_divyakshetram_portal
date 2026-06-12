@@ -1,0 +1,11 @@
+/* Login page logo */
+.login-logo img {
+    max-height: 140px !important;
+    width: auto !important;
+}
+
+/* Sidebar logo */
+.brand-image {
+    max-height: 40px !important;
+    width: auto !important;
+}

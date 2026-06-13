@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+from decouple import config
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -51,7 +52,8 @@ INSTALLED_APPS = [
     "rest_framework",
     "auditlog",
     "import_export",
-    "temple_content",
+    "storages",
+    "temple_content.apps.TempleContentConfig",
 ]
 
 MIDDLEWARE = [
@@ -88,7 +90,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'vaibhava_temple.wsgi.application'
 
 
-
+# during production should change this as its for local db testing
 DATABASES = {
     "default": dj_database_url.config(
         default=f"postgresql://{os.environ.get('DB_USER', 'temple_user')}:{os.environ.get('DB_PASSWORD', 'qwerty')}@{os.environ.get('DB_HOST', 'localhost')}:{os.environ.get('DB_PORT', '5432')}/{os.environ.get('DB_NAME', 'vaibhava_temple_db')}",
@@ -110,18 +112,69 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
+# STORAGES = {
+#     "default": {
+#         "BACKEND": "django.core.files.storage.FileSystemStorage",
+#     },
+#     "staticfiles": {
+#         "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
+#     },
+# }
+# MEDIA_URL = "/media/"
+# MEDIA_ROOT = BASE_DIR / "media"
+
+AWS_ACCESS_KEY_ID = config("R2_ACCESS_KEY_ID")
+
+AWS_SECRET_ACCESS_KEY = config("R2_SECRET_ACCESS_KEY")
+
+AWS_STORAGE_BUCKET_NAME = config("R2_BUCKET_NAME")
+
+AWS_S3_ENDPOINT_URL = (
+    f"https://{config('R2_ACCOUNT_ID')}.r2.cloudflarestorage.com"
+)
+
+AWS_S3_CUSTOM_DOMAIN = (
+    config("R2_PUBLIC_URL").replace("https://", "")
+)
+
+AWS_S3_REGION_NAME = "auto"
+
+AWS_S3_SIGNATURE_VERSION = "s3v4"
+
+AWS_LOCATION = ""
+
+AWS_S3_VERIFY = True
+
+AWS_QUERYSTRING_AUTH = False
+
+AWS_DEFAULT_ACL = None
+
+AWS_S3_FILE_OVERWRITE = False
+
+AWS_S3_ADDRESSING_STYLE = "virtual"
+
 STORAGES = {
     "default": {
-        "BACKEND": "django.core.files.storage.FileSystemStorage",
+        "BACKEND": "storages.backends.s3.S3Storage",
     },
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
     },
 }
-MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / "media"
+
+MEDIA_URL = config("R2_PUBLIC_URL") + "/"
+
+
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+# Admin session expires after 1 hour of inactivity
+SESSION_COOKIE_AGE = 60 * 60   # 3600 seconds = 1 hour
+
+# Reset expiry timer on every request
+SESSION_SAVE_EVERY_REQUEST = True
+
+# Close session when browser is closed
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 REST_FRAMEWORK = {
     "DEFAULT_RENDERER_CLASSES": ["rest_framework.renderers.JSONRenderer"],

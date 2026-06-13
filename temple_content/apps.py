@@ -5,3 +5,6 @@ class TempleContentConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
     name = "temple_content"
     verbose_name = "Temple Content"
+
+    def ready(self):
+        import temple_content.signals
